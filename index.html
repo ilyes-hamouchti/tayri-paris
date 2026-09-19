@@ -4,376 +4,422 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MAIA Atelier | Jersey premium</title>
-    <meta name="description"
-        content="MAIA Atelier imagine des voiles modernes en jersey premium, doux, extensible et respirant.">
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>tayri Paris | Maison de jersey premium</title>
+    <meta name="description" content="tayri Paris conçoit des pièces premium en jersey doux, respirant et élégant pour le quotidien et les moments forts.">
     <style>
         :root {
-            --ink: #25151c;
-            --wine: #742044;
-            --rose: #c13b70;
-            --pink: #f6dce6;
-            --cream: #fffaf6;
-            --line: #ead9df;
-            --gold: #d9a54d;
-            --shadow: 0 22px 60px #74204420
+            --bg: #f8f2ee;
+            --bg-strong: #f5e6eb;
+            --panel: #fffdfb;
+            --card: #fffaf8;
+            --ink: #1d1217;
+            --ink-soft: #52414a;
+            --plum: #341a2a;
+            --plum-2: #5d2238;
+            --rose: #c76a8d;
+            --rose-soft: #f0d5df;
+            --gold: #d5ad6b;
+            --line: rgba(87, 54, 67, 0.14);
+            --shadow: 0 24px 55px rgba(65, 22, 38, 0.12);
+            --shadow-soft: 0 18px 30px rgba(65, 22, 38, 0.08);
+            --success: #3e8f65;
         }
 
         * {
             box-sizing: border-box;
-            margin: 0
+            margin: 0;
         }
 
         html {
-            scroll-behavior: smooth
+            scroll-behavior: smooth;
         }
 
         body {
-            background: var(--cream);
+            background: linear-gradient(180deg, #f9f2ef 0%, #f7f0f4 100%);
             color: var(--ink);
-            font-family: Georgia, serif;
-            overflow-x: hidden
+            font-family: "Segoe UI", Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
         }
 
         a {
+            color: inherit;
             text-decoration: none;
-            color: inherit
         }
 
         button,
         input {
-            font: inherit
+            font: inherit;
         }
 
         button {
+            border: 0;
             cursor: pointer;
-            border: 0
         }
 
         .wrap {
-            width: min(1160px, calc(100% - 36px));
-            margin: auto
+            width: min(1180px, calc(100% - 36px));
+            margin: 0 auto;
         }
 
-        header {
+        .topbar {
             position: sticky;
             top: 0;
-            z-index: 10;
-            background: #fffaf6e8;
+            z-index: 30;
+            background: rgba(255, 251, 249, 0.8);
             backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--line)
+            border-bottom: 1px solid var(--line);
         }
 
         .nav {
-            height: 76px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 24px
+            height: 82px;
+            gap: 24px;
         }
 
-        .logo {
-            font-size: 28px;
-            color: var(--wine);
-            font-style: italic;
-            font-weight: bold
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--plum);
         }
 
-        .logo small {
+        .brand-mark {
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--plum) 0%, var(--rose) 100%);
+            color: white;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .brand-text {
+            font-size: 1.05rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .brand-text small {
             display: block;
-            font: 10px Arial, sans-serif;
-            letter-spacing: 3px;
+            font-size: 0.62rem;
+            letter-spacing: 0.28em;
+            margin-top: 2px;
             color: var(--rose);
-            font-style: normal
         }
 
         .navlinks {
             display: flex;
+            align-items: center;
             gap: 28px;
-            font: 600 13px Arial, sans-serif
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+
+        .navlinks a {
+            transition: color 0.25s ease;
         }
 
         .navlinks a:hover {
-            color: var(--rose)
+            color: var(--rose);
         }
 
-        .bag {
-            background: var(--wine);
-            color: #fff;
-            border-radius: 30px;
-            padding: 11px 16px;
-            font: 700 13px Arial, sans-serif
+        .bag-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            border-radius: 999px;
+            background: var(--plum);
+            color: white;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            box-shadow: var(--shadow-soft);
         }
 
-        .bag b {
+        .bag-count {
+            width: 26px;
+            height: 26px;
             display: inline-grid;
             place-items: center;
-            width: 21px;
-            height: 21px;
-            background: #fff;
-            color: var(--wine);
             border-radius: 50%;
-            margin-left: 7px
+            background: white;
+            color: var(--plum);
+            font-weight: 700;
         }
 
         .hero {
-            min-height: 650px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 45px;
-            background: radial-gradient(circle at 80% 35%, #efb3c8, transparent 37%), linear-gradient(120deg, #fffaf6, #fbe9ef)
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 70% 20%, rgba(199, 106, 141, 0.18), transparent 28%),
+                radial-gradient(circle at 85% 65%, rgba(213, 173, 107, 0.18), transparent 24%),
+                linear-gradient(120deg, #fffaf8 0%, #f8edf2 100%);
+            border-bottom: 1px solid var(--line);
         }
 
-        .kicker,
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1.08fr 0.92fr;
+            align-items: center;
+            gap: 42px;
+            min-height: 690px;
+        }
+
         .eyebrow {
+            display: inline-block;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
             color: var(--rose);
-            font-style: italic;
-            font-size: 16px
+            font-weight: 700;
         }
 
         .hero h1 {
-            font-size: clamp(50px, 7vw, 90px);
-            line-height: .95;
-            font-weight: 400;
-            margin: 18px 0;
-            max-width: 650px
+            margin: 20px 0 18px;
+            font-size: clamp(3.3rem, 6vw, 7rem);
+            line-height: 0.94;
+            letter-spacing: -0.06em;
+            font-weight: 700;
+            max-width: 680px;
+            color: var(--ink);
         }
 
-        .hero h1 em {
-            color: var(--wine)
+        .hero h1 span {
+            color: var(--plum);
+            display: block;
         }
 
         .hero p {
-            max-width: 510px;
-            font: 17px/1.65 Arial, sans-serif;
-            color: #60404c
+            max-width: 580px;
+            font-size: 1.08rem;
+            line-height: 1.8;
+            color: var(--ink-soft);
         }
 
-        .actions {
+        .cta-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin: 30px 0
+            gap: 14px;
+            margin: 32px 0 26px;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 14px 22px;
-            border-radius: 30px;
-            font: 700 13px Arial, sans-serif;
-            transition: .25s
+            gap: 10px;
+            padding: 15px 22px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
         }
 
-        .primary {
-            background: var(--rose);
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--rose) 0%, var(--plum) 100%);
             color: white;
-            box-shadow: var(--shadow)
+            box-shadow: 0 18px 28px rgba(116, 32, 68, 0.24);
         }
 
-        .primary:hover {
-            transform: translateY(-4px);
-            background: var(--wine)
-        }
-
-        .outline {
-            border: 1px solid var(--wine);
-            color: var(--wine)
-        }
-
-        .outline:hover {
-            background: var(--wine);
-            color: #fff
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid rgba(52, 26, 42, 0.28);
+            color: var(--plum);
         }
 
         .proof {
             display: flex;
             flex-wrap: wrap;
             gap: 18px;
-            font: 700 11px Arial, sans-serif;
-            color: #765361
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-soft);
         }
 
-        .proof span:before {
-            content: '✓';
+        .proof span::before {
+            content: "✓";
             color: var(--rose);
-            margin-right: 5px
+            margin-right: 8px;
+            font-weight: 700;
         }
 
-        .visual {
+        .visual-wrap {
             position: relative;
-            min-height: 450px;
+            min-height: 500px;
             display: grid;
-            place-items: center
+            place-items: center;
         }
 
-        .blob {
+        .halo {
             position: absolute;
-            width: min(420px, 90%);
+            width: min(430px, 80%);
             aspect-ratio: 1;
-            background: var(--pink);
-            border-radius: 58% 42% 38% 62%;
-            animation: morph 8s ease-in-out infinite
+            border-radius: 42% 58% 54% 46% / 48% 42% 58% 52%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(240,213,223,0.7) 40%, rgba(199,106,141,0.18) 100%);
+            box-shadow: inset 0 0 40px rgba(255,255,255,0.8);
+            animation: drift 10s ease-in-out infinite;
         }
 
-        .silhouette {
-            position: relative;
-            width: min(320px, 75%);
-            filter: drop-shadow(0 22px 14px #7420442b);
-            animation: float 4s ease-in-out infinite
-        }
-
-        .ring {
+        .accent-ring {
             position: absolute;
-            right: 4%;
-            top: 10%;
-            width: 100px;
-            height: 100px;
-            border: 1px dashed var(--rose);
+            width: 120px;
+            height: 120px;
+            right: 12%;
+            top: 14%;
+            border: 1px dashed rgba(199, 106, 141, 0.8);
             border-radius: 50%;
-            animation: spin 13s linear infinite
+            animation: spin 16s linear infinite;
         }
 
-        .ring:after {
-            content: '•';
+        .accent-ring::after {
+            content: "";
             position: absolute;
-            top: -10px;
-            left: 44px;
-            color: var(--rose);
-            font-size: 24px
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--rose);
+            top: -6px;
+            left: 52px;
+            box-shadow: 0 0 0 5px rgba(199, 106, 141, 0.18);
         }
 
-        @keyframes morph {
-            50% {
-                border-radius: 40% 60% 63% 37%;
-                transform: rotate(8deg)
-            }
+        .model {
+            position: relative;
+            width: min(360px, 80%);
+            filter: drop-shadow(0 32px 28px rgba(52, 26, 42, 0.22));
+            animation: floatUp 5s ease-in-out infinite;
         }
 
-        @keyframes float {
-            50% {
-                transform: translateY(-14px)
-            }
+        .section {
+            padding: 110px 0;
         }
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg)
-            }
-        }
-
-        section {
-            padding: 92px 0
-        }
-
-        .head {
+        .section-head {
+            max-width: 700px;
+            margin: 0 auto 42px;
             text-align: center;
-            max-width: 650px;
-            margin: 0 auto 42px
         }
 
-        .head h2 {
-            font-size: clamp(32px, 4vw, 50px);
-            font-weight: 400;
-            margin: 9px 0
+        .section-head h2 {
+            font-size: clamp(2.2rem, 3vw, 3.4rem);
+            letter-spacing: -0.05em;
+            line-height: 1.1;
+            margin: 12px 0 12px;
+            color: var(--ink);
         }
 
-        .head p {
-            font: 15px/1.6 Arial, sans-serif;
-            color: #765361
+        .section-head p {
+            font-size: 1.02rem;
+            line-height: 1.8;
+            color: var(--ink-soft);
         }
 
-        .fabric {
-            background: #fff
-        }
-
-        .fabricgrid {
+        .feature-wrap {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px
+            grid-template-columns: 1.08fr 0.92fr;
+            gap: 20px;
         }
 
-        .fabricbox {
-            padding: 40px;
-            background: var(--cream);
+        .feature-box {
+            padding: 42px;
+            background: rgba(255, 255, 255, 0.7);
             border: 1px solid var(--line);
-            border-radius: 25px;
-            box-shadow: var(--shadow)
+            border-radius: 28px;
+            box-shadow: var(--shadow-soft);
         }
 
-        .fabricbox h3 {
-            font-size: 29px;
-            font-weight: 400;
-            color: var(--wine);
-            margin-bottom: 12px
+        .feature-box h3 {
+            color: var(--plum);
+            font-size: clamp(2rem, 3vw, 2.7rem);
+            line-height: 1.12;
+            letter-spacing: -0.05em;
+            margin-bottom: 18px;
         }
 
-        .fabricbox p {
-            font: 15px/1.7 Arial, sans-serif;
-            color: #654451
+        .feature-box p {
+            color: var(--ink-soft);
+            line-height: 1.8;
+            font-size: 1rem;
         }
 
-        .specs {
+        .metrics {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 25px
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 28px;
         }
 
-        .spec {
-            background: #fff;
-            padding: 16px;
-            border-radius: 15px
+        .metric {
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 18px 18px 14px;
         }
 
-        .spec strong {
+        .metric strong {
             display: block;
+            font-size: 1.8rem;
             color: var(--rose);
-            font-size: 20px
+            margin-bottom: 8px;
+            font-weight: 700;
+            letter-spacing: -0.06em;
         }
 
-        .spec span {
-            font: 11px Arial, sans-serif;
-            color: #765361
+        .metric span {
+            color: var(--ink-soft);
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
         }
 
-        .tones {
+        .palette {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
         }
 
         .tone {
-            min-height: 180px;
-            border-radius: 20px;
-            padding: 14px;
+            min-height: 220px;
+            border-radius: 24px;
+            padding: 16px;
+            color: white;
             display: flex;
             align-items: end;
-            color: #fff;
-            font: 700 12px Arial, sans-serif;
-            box-shadow: inset 0 -80px 60px #0004
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            box-shadow: inset 0 -90px 55px rgba(0,0,0,0.12);
         }
 
-        .wine {
-            background: #742044
-        }
-
-        .powder {
-            background: #d49faf
-        }
-
-        .black {
-            background: #25232a
-        }
+        .tone.plum { background: linear-gradient(135deg, #3d1d2d, #7a2a45); }
+        .tone.rose { background: linear-gradient(135deg, #edc9d7, #d28ca7); color: #2b1a22; }
+        .tone.ink { background: linear-gradient(135deg, #1e1519, #40313d); }
 
         .shop {
-            background: #fdf0f4
+            background: linear-gradient(180deg, #fdf5f6 0%, #fffaf7 100%);
         }
 
         .filters {
@@ -381,690 +427,788 @@
             justify-content: center;
             gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 32px
+            margin-bottom: 30px;
         }
 
         .filter {
-            padding: 10px 17px;
-            border-radius: 24px;
-            background: #fff;
-            color: var(--wine);
+            padding: 11px 18px;
+            border-radius: 999px;
             border: 1px solid var(--line);
-            font: 700 12px Arial, sans-serif
+            background: rgba(255,255,255,0.8);
+            color: var(--plum);
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: all 0.25s ease;
         }
 
         .filter.active,
         .filter:hover {
-            background: var(--wine);
-            color: #fff
+            background: var(--plum);
+            border-color: var(--plum);
+            color: white;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
         }
 
         .card {
-            background: #fff;
+            background: rgba(255,255,255,0.8);
             border: 1px solid var(--line);
-            border-radius: 22px;
+            border-radius: 26px;
             overflow: hidden;
-            animation: rise .5s both;
-            transition: .3s
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            animation: rise 0.45s ease both;
         }
 
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: var(--shadow)
+            box-shadow: var(--shadow);
         }
 
         .card.hide {
-            display: none
+            display: none;
         }
 
         .media {
-            height: 245px;
+            position: relative;
+            height: 260px;
             display: grid;
             place-items: center;
-            position: relative
+            background: linear-gradient(180deg, #f8eef2 0%, #f5e7ec 100%);
         }
 
-        .media:after {
-            content: 'JERSEY PREMIUM';
+        .media::before {
+            content: "TAYRI PARIS";
             position: absolute;
-            top: 15px;
-            left: 15px;
-            background: #fff9;
-            color: var(--wine);
-            border-radius: 20px;
-            padding: 6px 9px;
-            font: 700 9px Arial, sans-serif;
-            letter-spacing: 1px
+            top: 18px;
+            left: 18px;
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.8);
+            color: var(--plum);
+            font-size: 0.66rem;
+            letter-spacing: 0.14em;
+            font-weight: 700;
         }
 
         .mini {
-            width: 175px;
-            transition: .3s
+            width: 185px;
+            transition: transform 0.3s ease;
         }
 
         .card:hover .mini {
-            transform: scale(1.07) rotate(2deg)
+            transform: scale(1.06) rotate(2deg);
         }
 
         .body {
-            padding: 20px
+            padding: 22px 20px 18px;
         }
 
-        .body h3 {
-            font-size: 21px;
-            font-weight: 400
-        }
-
-        .body p {
-            font: 13px/1.5 Arial, sans-serif;
-            color: #765361;
-            margin-top: 5px
-        }
-
-        .foot {
+        .meta {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 17px
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .meta span {
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--rose);
+            font-weight: 700;
+        }
+
+        .body h3 {
+            font-size: 1.7rem;
+            letter-spacing: -0.04em;
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .body p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--ink-soft);
+            margin-top: 8px;
+        }
+
+        .foot {
+            margin-top: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
         }
 
         .price {
-            font: 700 18px Arial, sans-serif;
-            color: var(--wine)
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--plum);
         }
 
         .add {
             background: var(--ink);
-            color: #fff;
+            color: white;
             border-radius: 12px;
-            padding: 10px 13px;
-            font: 700 12px Arial, sans-serif
+            padding: 11px 14px;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: background 0.2s ease;
         }
 
         .add:hover {
-            background: var(--rose)
+            background: var(--rose);
+        }
+
+        .craft {
+            background: linear-gradient(180deg, #f8f4f1 0%, #fdf6f8 100%);
         }
 
         .steps {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 28px;
-            text-align: center
+            text-align: center;
         }
 
-        .step .number {
-            font-size: 54px;
-            color: #e4b3c6;
-            font-style: italic
+        .step {
+            padding: 28px 22px;
+            background: rgba(255,255,255,0.7);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .number {
+            display: inline-block;
+            font-size: 3.6rem;
+            font-weight: 700;
+            letter-spacing: -0.08em;
+            color: rgba(199, 106, 141, 0.45);
+            margin-bottom: 12px;
         }
 
         .step h3 {
-            font-size: 21px;
-            font-weight: 400;
-            margin: 4px 0
+            font-size: 1.5rem;
+            letter-spacing: -0.04em;
+            margin-bottom: 10px;
         }
 
         .step p {
-            font: 14px/1.6 Arial, sans-serif;
-            color: #765361
+            color: var(--ink-soft);
+            line-height: 1.75;
+            font-size: 0.96rem;
         }
 
-        .join {
-            background: var(--wine);
-            color: #fff;
-            text-align: center
+        .newsletter {
+            background: linear-gradient(135deg, var(--plum) 0%, #4b1e2e 100%);
+            color: white;
+            text-align: center;
         }
 
-        .join p {
-            font: 15px Arial, sans-serif;
-            opacity: .8;
-            margin: 12px auto 24px
+        .newsletter .eyebrow {
+            color: #f7d9e3;
         }
 
-        .join form {
+        .newsletter h2 {
+            margin-top: 14px;
+            font-size: clamp(2.4rem, 4vw, 4rem);
+            letter-spacing: -0.06em;
+            line-height: 1.06;
+        }
+
+        .newsletter p {
+            max-width: 580px;
+            margin: 12px auto 24px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            font-size: 1.02rem;
+        }
+
+        .newsletter form {
             display: flex;
-            max-width: 480px;
-            margin: auto;
-            gap: 8px
+            justify-content: center;
+            gap: 12px;
+            max-width: 520px;
+            margin: 0 auto;
         }
 
-        .join input {
+        .newsletter input {
             flex: 1;
+            min-width: 0;
+            border-radius: 999px;
             border: 0;
-            border-radius: 30px;
-            padding: 14px 18px;
-            font: 14px Arial, sans-serif
+            background: rgba(255,255,255,0.08);
+            color: white;
+            padding: 16px 20px;
+            font-size: 0.96rem;
+            outline: none;
         }
 
-        .join .btn {
-            background: var(--gold);
-            color: var(--ink)
+        .newsletter input::placeholder {
+            color: rgba(255,255,255,0.68);
+        }
+
+        .newsletter .btn {
+            background: linear-gradient(135deg, #f0c76d 0%, #d7a85e 100%);
+            color: var(--plum);
+            border: 0;
+            box-shadow: 0 18px 28px rgba(194, 142, 62, 0.2);
         }
 
         .message {
-            min-height: 20px;
-            margin-top: 12px;
-            color: var(--gold);
-            font: 700 12px Arial, sans-serif
+            min-height: 24px;
+            margin-top: 16px;
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #f5d58f;
         }
 
         .drawer {
             position: fixed;
             inset: 0;
-            z-index: 30;
-            background: #25151c55;
+            background: rgba(29, 18, 23, 0.45);
+            z-index: 40;
             opacity: 0;
             visibility: hidden;
-            transition: .3s
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
         .drawer.open {
             opacity: 1;
-            visibility: visible
+            visibility: visible;
         }
 
         .panel {
-            margin-left: auto;
-            width: min(420px, 100%);
+            width: min(430px, 100%);
             height: 100%;
-            padding: 28px;
-            background: var(--cream);
+            margin-left: auto;
+            background: #fffaf8;
+            padding: 28px 24px 20px;
             transform: translateX(100%);
-            transition: .4s;
+            transition: transform 0.35s ease;
             display: flex;
-            flex-direction: column
+            flex-direction: column;
         }
 
         .drawer.open .panel {
-            transform: none
+            transform: translateX(0);
         }
 
-        .panelhead {
+        .panel-head {
             display: flex;
+            align-items: center;
             justify-content: space-between;
             border-bottom: 1px solid var(--line);
-            padding-bottom: 18px
+            padding-bottom: 18px;
         }
 
-        .panel h2 {
-            font-size: 30px;
-            font-weight: 400
+        .panel-head h2 {
+            letter-spacing: -0.05em;
+            font-size: 2rem;
         }
 
-        .close {
+        .close-btn {
             background: none;
-            color: var(--wine);
-            font-size: 28px
+            color: var(--plum);
+            font-size: 2.2rem;
+            line-height: 1;
         }
 
         .lines {
             flex: 1;
-            overflow: auto
+            overflow: auto;
+            padding-right: 4px;
         }
 
         .line {
             display: grid;
-            grid-template-columns: 58px 1fr auto;
-            gap: 11px;
+            grid-template-columns: 64px 1fr auto;
+            gap: 12px;
+            align-items: center;
             padding: 16px 0;
             border-bottom: 1px solid var(--line);
-            font: 13px Arial, sans-serif
         }
 
-        .linepic {
-            height: 58px;
-            border-radius: 12px;
+        .line-pic {
+            height: 64px;
+            border-radius: 16px;
             display: grid;
-            place-items: center
+            place-items: center;
+            background: linear-gradient(135deg, #f6dfe7, #f3e9e4);
         }
 
-        .linepic svg {
-            width: 50px
+        .line-pic svg {
+            width: 42px;
+            height: 42px;
         }
 
         .line strong {
             display: block;
-            font-family: Georgia, serif;
-            font-size: 15px;
-            margin-bottom: 5px
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .line small {
+            color: var(--ink-soft);
+            font-size: 0.76rem;
         }
 
         .line button {
             background: none;
             color: var(--rose);
             text-decoration: underline;
-            font-size: 12px
+            font-size: 0.75rem;
         }
 
         .total {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            margin-top: 8px;
             border-top: 1px solid var(--line);
-            padding-top: 18px;
-            font: 700 16px Arial, sans-serif
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .panel .btn {
+            width: 100%;
+            margin-top: 16px;
         }
 
         .empty {
             text-align: center;
-            padding: 50px 10px;
-            color: #765361;
-            font: 14px Arial, sans-serif
+            padding: 54px 10px 18px;
+            color: var(--ink-soft);
+            font-size: 0.98rem;
         }
 
-        /* React motion layer */
-        #react-effects,
-        .react-cursor,
-        .react-spotlight,
-        .react-particles,
-        .react-progress,
-        .react-burst {
-            pointer-events: none;
+        footer {
+            padding: 22px 0 30px;
+            color: var(--ink-soft);
+            font-size: 0.84rem;
+            text-align: center;
         }
 
-        .react-cursor {
-            position: fixed;
-            z-index: 100;
-            width: 18px;
-            height: 18px;
-            border: 1px solid var(--rose);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width .25s ease, height .25s ease, background .25s ease;
-            mix-blend-mode: multiply;
-        }
-
-        .react-cursor.is-hover {
-            width: 52px;
-            height: 52px;
-            background: #c13b7020;
-        }
-
-        .react-spotlight {
-            position: fixed;
-            z-index: -1;
-            width: 420px;
-            height: 420px;
-            border-radius: 50%;
-            background: radial-gradient(circle, #f3b6ca26, transparent 68%);
-            transform: translate(-50%, -50%);
-            transition: left .45s ease-out, top .45s ease-out;
-        }
-
-        .react-progress {
-            position: fixed;
-            left: 0;
-            top: 0;
-            z-index: 100;
-            height: 3px;
-            background: linear-gradient(90deg, var(--rose), var(--gold));
-            box-shadow: 0 0 16px #c13b70aa;
-        }
-
-        .react-particles {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .react-particle {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: var(--rose);
-            opacity: .18;
-            animation: reactFloat var(--duration) ease-in-out infinite alternate;
-        }
-
-        @keyframes reactFloat {
-            from {
-                transform: translate3d(0, 18px, 0) scale(.7);
-            }
-
-            to {
-                transform: translate3d(var(--drift), -34px, 0) scale(1.4);
+        @keyframes drift {
+            50% {
+                border-radius: 50% 50% 60% 40% / 45% 55% 45% 55%;
+                transform: rotate(8deg) scale(1.03);
             }
         }
 
-        .react-burst {
-            position: fixed;
-            z-index: 90;
-            width: 12px;
-            height: 12px;
-            border: 2px solid var(--rose);
-            border-radius: 50%;
-            animation: reactBurst .65s ease-out forwards;
-        }
-
-        @keyframes reactBurst {
-            to {
-                opacity: 0;
-                transform: scale(5);
-            }
-        }
-
-        body.react-ready main,
-        body.react-ready footer {
-            animation: reactPageIn .9s cubic-bezier(.2, .8, .25, 1) both;
-        }
-
-        @keyframes reactPageIn {
-            from {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (hover: none),
-        (pointer: coarse) {
-            .react-cursor {
-                display: none;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-            .react-particle,
-            .react-burst,
-            body.react-ready main,
-            body.react-ready footer {
-                animation: none !important;
-            }
-
-            .react-spotlight {
-                display: none;
+        @keyframes floatUp {
+            50% {
+                transform: translateY(-14px);
             }
         }
 
         @keyframes rise {
             from {
                 opacity: 0;
-                transform: translateY(18px)
+                transform: translateY(18px);
             }
-
             to {
                 opacity: 1;
-                transform: none
+                transform: translateY(0);
             }
         }
 
-        @media(max-width:800px) {
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 890px) {
             .navlinks {
-                display: none
+                display: none;
             }
 
-            .hero {
+            .hero-inner,
+            .feature-wrap,
+            .steps,
+            .grid {
                 grid-template-columns: 1fr;
+            }
+
+            .hero-inner {
                 text-align: center;
-                padding: 55px 0
+                padding: 30px 0 40px;
             }
 
             .hero p {
-                margin: auto
+                margin: 0 auto;
             }
 
-            .actions,
+            .cta-row,
             .proof {
-                justify-content: center
+                justify-content: center;
             }
 
-            .visual {
-                min-height: 350px
-            }
-
-            .fabricgrid {
-                grid-template-columns: 1fr
-            }
-
-            .grid {
-                grid-template-columns: repeat(2, 1fr)
-            }
-
-            .steps {
-                grid-template-columns: 1fr;
-                gap: 35px
+            .visual-wrap {
+                min-height: 380px;
             }
         }
 
-        @media(max-width:560px) {
+        @media (max-width: 620px) {
             .wrap {
-                width: calc(100% - 28px)
+                width: calc(100% - 24px);
             }
 
-            .grid {
-                grid-template-columns: 1fr
+            .brand-text {
+                letter-spacing: 0.11em;
             }
 
-            .tones {
-                grid-template-columns: 1fr 1fr
+            .newsletter form {
+                flex-direction: column;
+            }
+
+            .feature-box,
+            .step {
+                padding: 24px 18px;
+            }
+
+            .palette {
+                grid-template-columns: 1fr;
             }
 
             .tone {
-                min-height: 130px
-            }
-
-            .join form {
-                flex-direction: column
-            }
-
-            .join input,
-            .join button {
-                width: 100%
-            }
-
-            .fabricbox {
-                padding: 25px
+                min-height: 150px;
             }
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <div class="wrap nav"><a href="#accueil" class="logo">MAIA <small>ATELIER · PARIS</small></a>
-            <nav class="navlinks"><a href="#matiere">La matiere</a><a href="#collection">Collection</a><a
-                    href="#savoir-faire">Savoir-faire</a></nav><button class="bag" id="openBag">Panier <b
-                    id="count">0</b></button>
+    <header class="topbar">
+        <div class="wrap nav">
+            <a href="#accueil" class="brand" aria-label="tayri Paris">
+                <span class="brand-mark">T</span>
+                <span class="brand-text">tayri<small>PARIS</small></span>
+            </a>
+            <nav class="navlinks" aria-label="Navigation principale">
+                <a href="#maison">Maison</a>
+                <a href="#matiere">Matière</a>
+                <a href="#collection">Collection</a>
+                <a href="#atelier">Atelier</a>
+            </nav>
+            <button class="bag-btn" id="openBag" type="button">
+                Panier <span class="bag-count" id="count">0</span>
+            </button>
         </div>
     </header>
+
     <main id="accueil">
         <section class="hero">
-            <div class="wrap hero">
-                <div><span class="kicker">Le voile qui accompagne chaque mouvement</span>
-                    <h1>Le confort du <em>jersey premium.</em></h1>
-                    <p>Des voiles modernes, doux et couvrants, confectionnes dans une maille jersey premium extensible
-                        qui garde sa tenue du matin au soir.</p>
-                    <div class="actions"><a class="btn primary" href="#collection">Decouvrir la collection →</a><a
-                            class="btn outline" href="#matiere">Voir la matiere</a></div>
-                    <div class="proof"><span>Maille jersey premium</span><span>Livraison offerte des 60
-                            €</span><span>Retours sous 30 jours</span></div>
+            <div class="wrap hero-inner">
+                <div>
+                    <span class="eyebrow">Maison tayri Paris</span>
+                    <h1>Le luxe discret <span>dans chaque mouvement.</span></h1>
+                    <p>Des pièces en jersey premium pensées pour une élégance sans effort : souplesse, tenue et confort au quotidien, dans un univers moderne et raffiné.</p>
+                    <div class="cta-row">
+                        <a class="btn btn-primary" href="#collection">Découvrir la collection</a>
+                        <a class="btn btn-secondary" href="#matiere">Voir la matière</a>
+                    </div>
+                    <div class="proof">
+                        <span>Jersey premium</span>
+                        <span>Livraison offerte</span>
+                        <span>Retours simples</span>
+                    </div>
                 </div>
-                <div class="visual">
-                    <div class="blob"></div>
-                    <div class="ring"></div><svg class="silhouette" viewBox="0 0 320 380" fill="none">
-                        <ellipse cx="160" cy="360" rx="120" ry="14" fill="#c13b70" opacity=".25" />
-                        <path d="M60 250C60 154 105 82 160 82s100 72 100 168c0 60-24 96-100 96S60 310 60 250Z"
-                            fill="#742044" />
-                        <path d="M75 205c8-70 42-118 85-118s77 48 85 118c-30-18-58-26-85-26s-55 8-85 26Z"
-                            fill="#d49faf" />
-                        <circle cx="160" cy="160" r="58" fill="#fbe5d9" />
-                        <path d="M160 96c-30 0-55 22-58 52 18-14 38-20 58-20s40 6 58 20c-3-30-28-52-58-52Z"
-                            fill="#742044" />
-                        <path d="M120 172c8 10 18 15 40 15s32-5 40-15" stroke="#742044" stroke-width="4"
-                            stroke-linecap="round" />
-                        <circle cx="222" cy="246" r="13" fill="#fffaf6" stroke="#c13b70" stroke-width="3" />
-                        <circle cx="222" cy="246" r="3" fill="#c13b70" />
+
+                <div class="visual-wrap" aria-hidden="true">
+                    <div class="halo"></div>
+                    <div class="accent-ring"></div>
+                    <svg class="model" viewBox="0 0 420 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="210" cy="450" rx="120" ry="16" fill="#ae6c87" opacity="0.24"/>
+                        <path d="M123 333C123 215 163 119 210 119C257 119 297 215 297 333C297 392 260 434 210 434C160 434 123 392 123 333Z" fill="#4d2236"/>
+                        <path d="M145 287C150 211 176 174 210 174C244 174 270 211 275 287C249 308 229 318 210 318C191 318 171 308 145 287Z" fill="#d7a8b8"/>
+                        <circle cx="210" cy="163" r="72" fill="#f7e4d4"/>
+                        <path d="M147 167C154 116 181 91 210 91C239 91 266 116 273 167C249 150 232 143 210 143C188 143 171 150 147 167Z" fill="#3f1d2f"/>
+                        <path d="M168 208C182 218 194 223 210 223C226 223 238 218 252 208" stroke="#3f1d2f" stroke-width="5" stroke-linecap="round"/>
+                        <circle cx="301" cy="300" r="17" fill="#f9f5f2" stroke="#c76a8d" stroke-width="4"/>
+                        <circle cx="301" cy="300" r="4" fill="#c76a8d"/>
                     </svg>
                 </div>
             </div>
         </section>
-        <section class="fabric" id="matiere">
+
+        <section class="section" id="matiere">
             <div class="wrap">
-                <div class="head"><span class="eyebrow">Notre signature textile</span>
-                    <h2>Le jersey premium, en detail.</h2>
-                    <p>Une maille haut de gamme selectionnee pour son toucher doux, son tombé net et sa capacite a
-                        suivre le mouvement sans se deformer.</p>
+                <div class="section-head">
+                    <span class="eyebrow">Notre signature</span>
+                    <h2>La matière qui donne du volume à l'élégance.</h2>
+                    <p>Chaque pièce tayri Paris est conçue dans un jersey premium, doux au toucher, respirant et structuré pour rester impeccable de la journée à la soirée.</p>
                 </div>
-                <div class="fabricgrid">
-                    <article class="fabricbox">
-                        <h3>Doux. Dense. Respirant.</h3>
-                        <p>Le jersey premium offre une couverture opaque, une bonne reprise de forme et une sensation
-                            legere sur la peau. Chaque voile est pense pour le quotidien, sans compromis sur le style.
-                        </p>
-                        <div class="specs">
-                            <div class="spec"><strong>4-way</strong><span>Extensible dans tous les sens</span></div>
-                            <div class="spec"><strong>Premium</strong><span>Maille dense et toucher doux</span></div>
-                            <div class="spec"><strong>Respirant</strong><span>Confort longue duree</span></div>
-                            <div class="spec"><strong>Anti-froissage</strong><span>Reste net toute la journee</span>
+
+                <div class="feature-wrap">
+                    <article class="feature-box">
+                        <h3>Doux. Dense. Élégant.</h3>
+                        <p>Notre tissu offre une sensation veloutée sur la peau, un tombé net et une excellente tenue. Il suit le corps sans le serrer, pour une allure souple, contemporaine et toujours distinguée.</p>
+                        <div class="metrics">
+                            <div class="metric">
+                                <strong>4-way</strong>
+                                <span>Extensible</span>
+                            </div>
+                            <div class="metric">
+                                <strong>Premium</strong>
+                                <span>Maille haute gamme</span>
+                            </div>
+                            <div class="metric">
+                                <strong>Respirant</strong>
+                                <span>Confort long</span>
+                            </div>
+                            <div class="metric">
+                                <strong>Net</strong>
+                                <span>Sans froissage</span>
                             </div>
                         </div>
                     </article>
-                    <div class="tones">
-                        <div class="tone wine">Bordeaux profond</div>
-                        <div class="tone powder">Rose poudre</div>
-                        <div class="tone black">Noir mineral</div>
+
+                    <div class="palette" aria-label="Palette de couleurs">
+                        <div class="tone plum">Bordeaux</div>
+                        <div class="tone rose">Rose poudré</div>
+                        <div class="tone ink">Noir profond</div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="shop" id="collection">
+
+        <section class="section shop" id="collection">
             <div class="wrap">
-                <div class="head"><span class="eyebrow">La collection</span>
-                    <h2>Une piece, plusieurs vies.</h2>
-                    <p>Tous les modeles sont realises en jersey premium. Choisissez votre coupe puis ajoutez-la au
-                        panier.</p>
+                <div class="section-head">
+                    <span class="eyebrow">La collection</span>
+                    <h2>Une pièce, plusieurs vies.</h2>
+                    <p>Des silhouettes contemporaines pensée pour le quotidien, les sorties élégantes et les instants plus légers.</p>
                 </div>
-                <div class="filters"><button class="filter active" data-filter="all">Tout voir</button><button
-                        class="filter" data-filter="quotidien">Quotidien</button><button class="filter"
-                        data-filter="sport">Sport</button><button class="filter" data-filter="soiree">Soiree</button>
+
+                <div class="filters">
+                    <button class="filter active" data-filter="all" type="button">Tout voir</button>
+                    <button class="filter" data-filter="quotidien" type="button">Quotidien</button>
+                    <button class="filter" data-filter="sport" type="button">Sport</button>
+                    <button class="filter" data-filter="soiree" type="button">Soirée</button>
                 </div>
+
                 <div class="grid" id="products"></div>
             </div>
         </section>
-        <section id="savoir-faire">
+
+        <section class="section craft" id="atelier">
             <div class="wrap">
-                <div class="head"><span class="eyebrow">Le geste MAIA</span>
-                    <h2>Pret en quelques secondes.</h2>
+                <div class="section-head">
+                    <span class="eyebrow">Le geste tayri</span>
+                    <h2>Prêt à porter, pensé pour durer.</h2>
                 </div>
                 <div class="steps">
-                    <article class="step"><span class="number">01</span>
-                        <h3>On enfile</h3>
-                        <p>La maille jersey premium epouse la tete et couvre naturellement le cou.</p>
+                    <article class="step">
+                        <span class="number">01</span>
+                        <h3>On choisit</h3>
+                        <p>Des coupes élégantes, un confort précis et un univers visuel qui reste intemporel.</p>
                     </article>
-                    <article class="step"><span class="number">02</span>
-                        <h3>On clipse</h3>
-                        <p>Le bouton discret maintient la forme sans epingle ni noeud complique.</p>
+                    <article class="step">
+                        <span class="number">02</span>
+                        <h3>On ajuste</h3>
+                        <p>La matière s’adapte à la morphologie et garde sa structure tout au long de la journée.</p>
                     </article>
-                    <article class="step"><span class="number">03</span>
-                        <h3>On vit</h3>
-                        <p>Le tissu reste doux, respirant et en place quand la journee s'accelere.</p>
+                    <article class="step">
+                        <span class="number">03</span>
+                        <h3>On porte</h3>
+                        <p>Une allure naturelle, raffinée et libre, pensée pour le mouvement et la confidence.</p>
                     </article>
                 </div>
             </div>
         </section>
-        <section class="join">
-            <div class="wrap"><span class="eyebrow">Bienvenue chez MAIA Atelier</span>
-                <h2>Une attention pour votre premiere commande.</h2>
-                <p>Recevez votre code de bienvenue et les nouvelles teintes en jersey premium.</p>
-                <form id="newsletter"><input type="email" placeholder="Votre adresse e-mail" required><button
-                        class="btn" type="submit">Recevoir -10%</button></form>
+
+        <section class="section newsletter" id="maison">
+            <div class="wrap">
+                <span class="eyebrow">Bienvenue chez tayri Paris</span>
+                <h2>Une attention particulière pour votre première commande.</h2>
+                <p>Recevez votre code de bienvenue et découvrez nos futures teintes exclusives en jersey premium.</p>
+                <form id="newsletterForm">
+                    <input type="email" placeholder="Votre adresse e-mail" required>
+                    <button class="btn" type="submit">Recevoir -10%</button>
+                </form>
                 <div class="message" id="newsletterMessage"></div>
             </div>
         </section>
     </main>
+
     <footer>
-        <div class="wrap">© 2026 MAIA Atelier · Jersey premium · Paris</div>
+        © 2026 tayri Paris · Maison de jersey premium · Paris
     </footer>
+
     <aside class="drawer" id="drawer" aria-hidden="true">
         <div class="panel">
-            <div class="panelhead">
-                <h2>Votre panier</h2><button class="close" id="closeBag" aria-label="Fermer">×</button>
+            <div class="panel-head">
+                <h2>Votre panier</h2>
+                <button class="close-btn" id="closeBag" type="button" aria-label="Fermer">×</button>
             </div>
             <div class="lines" id="lines"></div>
-            <div class="total"><span>Total</span><span id="total">0,00 €</span></div><button class="btn primary"
-                id="order" style="margin-top:16px">Passer la commande →</button>
+            <div class="total"><span>Total</span><span id="total">0,00 €</span></div>
+            <button class="btn btn-primary" id="order" type="button">Passer la commande</button>
             <div class="message" id="orderMessage"></div>
         </div>
     </aside>
-    <div id="react-effects" aria-hidden="true"></div>
+
     <script>
-        const products = [{ id: 'essentiel', name: 'Jersey Essentiel', desc: 'La coupe signature, souple et couvrante.', price: 32, cat: 'quotidien', color: '#c13b70' }, { id: 'active', name: 'Jersey Active', desc: 'Extensible et respirant pour bouger librement.', price: 36, cat: 'sport', color: '#25232a' }, { id: 'nuit', name: 'Jersey Nuit', desc: 'Un tombe elegant pour les moments precieux.', price: 42, cat: 'soiree', color: '#742044' }, { id: 'douceur', name: 'Jersey Douceur', desc: 'La maille la plus moelleuse de la collection.', price: 34, cat: 'quotidien', color: '#d49faf' }, { id: 'urban', name: 'Jersey Urban', desc: 'Une teinte intense, une tenue impeccable.', price: 38, cat: 'sport', color: '#4b3440' }, { id: 'lumiere', name: 'Jersey Lumiere', desc: 'Une finition lumineuse sans jamais briller.', price: 44, cat: 'soiree', color: '#b87970' }];
-        const svg = c => `<svg class="mini" viewBox="0 0 200 200" fill="none"><ellipse cx="100" cy="178" rx="70" ry="9" fill="${c}" opacity=".2"/><path d="M45 150c0-58 25-100 55-100s55 42 55 100c0 34-16 52-55 52s-55-18-55-52Z" fill="${c}"/><path d="M55 122c6-42 24-70 45-70s39 28 45 70c-16-10-30-14-45-14s-29 4-45 14Z" fill="#fbe5d9" opacity=".6"/><circle cx="132" cy="140" r="8" fill="#fffaf6" stroke="#25151c" stroke-width="2"/><circle cx="132" cy="140" r="2" fill="#25151c"/></svg>`;
-        const grid = document.querySelector('#products'), drawer = document.querySelector('#drawer'); let cart = JSON.parse(localStorage.getItem('maia-cart') || '[]'); const euro = n => n.toFixed(2).replace('.', ',') + ' €';
-        function showProducts(filter = 'all') { grid.innerHTML = products.map((p, i) => `<article class="card ${filter !== 'all' && p.cat !== filter ? 'hide' : ''}" style="animation-delay:${i * .06}s"><div class="media" style="background:${p.color}22">${svg(p.color)}</div><div class="body"><h3>${p.name}</h3><p>${p.desc} <strong>Jersey premium.</strong></p><div class="foot"><span class="price">${euro(p.price)}</span><button class="add" data-id="${p.id}">Ajouter +</button></div></div></article>`).join('') }
-        function renderCart() { document.querySelector('#count').textContent = cart.reduce((n, x) => n + x.qty, 0); document.querySelector('#total').textContent = euro(cart.reduce((n, x) => n + x.price * x.qty, 0)); document.querySelector('#lines').innerHTML = cart.length ? cart.map(x => `<div class="line"><div class="linepic" style="background:${x.color}22">${svg(x.color)}</div><div><strong>${x.name}</strong><span>${euro(x.price)} · Jersey premium</span><br><button data-remove="${x.id}">Retirer</button></div><b>×${x.qty}</b></div>`).join('') : '<p class="empty">Votre panier est vide.<br>Decouvrez nos voiles en jersey premium.</p>'; localStorage.setItem('maia-cart', JSON.stringify(cart)) }
-        function openDrawer() { drawer.classList.add('open'); drawer.setAttribute('aria-hidden', 'false') } function closeDrawer() { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true') } showProducts(); renderCart(); document.querySelectorAll('.filter').forEach(b => b.onclick = () => { document.querySelectorAll('.filter').forEach(x => x.classList.remove('active')); b.classList.add('active'); showProducts(b.dataset.filter) }); grid.onclick = e => { const b = e.target.closest('[data-id]'); if (!b) return; const p = products.find(x => x.id === b.dataset.id), old = cart.find(x => x.id === p.id); old ? old.qty++ : cart.push({ ...p, qty: 1 }); renderCart(); openDrawer() }; document.querySelector('#lines').onclick = e => { const b = e.target.closest('[data-remove]'); if (b) { cart = cart.filter(x => x.id !== b.dataset.remove); renderCart() } }; document.querySelector('#openBag').onclick = openDrawer; document.querySelector('#closeBag').onclick = closeDrawer; drawer.onclick = e => { if (e.target === drawer) closeDrawer() }; document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer() }); document.querySelector('#order').onclick = () => { const m = document.querySelector('#orderMessage'); m.textContent = cart.length ? 'Commande simulee validee. Merci pour votre confiance !' : 'Votre panier est vide.'; if (cart.length) { cart = []; renderCart() } }; document.querySelector('#newsletter').onsubmit = e => { e.preventDefault(); document.querySelector('#newsletterMessage').textContent = 'Merci ! Votre code de bienvenue est pret.'; e.target.reset() };
-    </script>
-    <script type="text/babel">
-        const { useEffect, useState } = React;
+        const products = [
+            { id: 1, name: 'Voile Ondine', category: 'quotidien', price: 98, description: 'Silhouette souple et fluide pour un look discret et chic.', tag: 'Best seller' },
+            { id: 2, name: 'Mallea Move', category: 'sport', price: 118, description: 'Confort de mouvement et tenue impeccable, même en route.', tag: 'Nouvelle' },
+            { id: 3, name: 'Nocturne', category: 'soiree', price: 136, description: 'Un tombé sculpté pour les soirées raffinées et les invités.', tag: 'Signature' },
+            { id: 4, name: 'Solaire', category: 'quotidien', price: 92, description: 'La pièce légère qui transforme le quotidien en moment de style.', tag: 'Essentiel' },
+            { id: 5, name: 'Arcade', category: 'sport', price: 104, description: 'Une structure douce pour une allure active et élégante.', tag: 'Sport' },
+            { id: 6, name: 'Étoile', category: 'soiree', price: 148, description: 'Le modèle premium pour faire entrer la nuit avec élégance.', tag: 'Coup de cœur' }
+        ];
 
-        function MotionLayer() {
-            const [pointer, setPointer] = useState({ x: -100, y: -100 });
-            const [hovering, setHovering] = useState(false);
-            const [progress, setProgress] = useState(0);
-            const [bursts, setBursts] = useState([]);
+        const productGrid = document.getElementById('products');
+        const filterButtons = document.querySelectorAll('.filter');
+        const cartCounter = document.getElementById('count');
+        const bagDrawer = document.getElementById('drawer');
+        const lines = document.getElementById('lines');
+        const totalEl = document.getElementById('total');
 
-            useEffect(() => {
-                document.body.classList.add('react-ready');
-                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+        let cart = [];
 
-                const movePointer = event => setPointer({ x: event.clientX, y: event.clientY });
-                const updateProgress = () => {
-                    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-                    setProgress(scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0);
-                };
-                const updateHover = event => setHovering(Boolean(event.target.closest('a, button, input, .card, .tone')));
-                const createBurst = event => {
-                    const id = `${Date.now()}-${Math.random()}`;
-                    setBursts(current => [...current, { id, x: event.clientX, y: event.clientY }]);
-                    window.setTimeout(() => setBursts(current => current.filter(item => item.id !== id)), 700);
-                };
-
-                window.addEventListener('mousemove', movePointer, { passive: true });
-                window.addEventListener('scroll', updateProgress, { passive: true });
-                document.addEventListener('mouseover', updateHover, { passive: true });
-                document.addEventListener('click', createBurst, { passive: true });
-                updateProgress();
-                return () => {
-                    window.removeEventListener('mousemove', movePointer);
-                    window.removeEventListener('scroll', updateProgress);
-                    document.removeEventListener('mouseover', updateHover);
-                    document.removeEventListener('click', createBurst);
-                };
-            }, []);
-
-            const particles = Array.from({ length: 22 }, (_, index) => ({
-                id: index,
-                left: `${(index * 37) % 100}%`,
-                top: `${(index * 61) % 100}%`,
-                duration: `${5 + (index % 6)}s`,
-                drift: `${(index % 2 ? 1 : -1) * (12 + index % 5 * 8)}px`
-            }));
-
-            return <>
-                <div className={`react-cursor ${hovering ? 'is-hover' : ''}`} style={{ left: pointer.x, top: pointer.y }} />
-                <div className="react-spotlight" style={{ left: pointer.x, top: pointer.y }} />
-                <div className="react-progress" style={{ width: `${progress}%` }} />
-                <div className="react-particles">
-                    {particles.map(particle => <span className="react-particle" key={particle.id} style={{ left: particle.left, top: particle.top, '--duration': particle.duration, '--drift': particle.drift }} />)}
-                </div>
-                {bursts.map(burst => <span className="react-burst" key={burst.id} style={{ left: burst.x, top: burst.y }} />)}
-            </>;
+        function money(value) {
+            return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(value);
         }
 
-        ReactDOM.createRoot(document.getElementById('react-effects')).render(<MotionLayer />);
+        function getSVG(kind) {
+            const palette = {
+                quotidien: '#9d4a63',
+                sport: '#d7a85e',
+                soiree: '#3b1d2f'
+            };
+            const color = palette[kind] || '#9d4a63';
+            return `
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M26 72C26 46 47 26 60 26C73 26 94 46 94 72C94 85 84 96 60 96C36 96 26 85 26 72Z" fill="${color}" opacity="0.92"/>
+                <path d="M38 67C42 52 49 45 60 45C71 45 78 52 82 67C72 73 66 76 60 76C54 76 48 73 38 67Z" fill="#f7e4d4" opacity="0.9"/>
+                <path d="M49 38C52 31 56 28 60 28C64 28 68 31 71 38C67 35 64 34 60 34C56 34 53 35 49 38Z" fill="#3d1d2d"/>
+                <circle cx="76" cy="71" r="8" fill="#f6f0ee" stroke="#d59a96" stroke-width="3"/>
+            </svg>`;
+            `;
+        }
+
+        function renderProducts(filter = 'all') {
+            const visible = filter === 'all' ? products : products.filter(item => item.category === filter);
+
+            productGrid.innerHTML = visible.map((product) => `
+                <article class="card" data-category="${product.category}">
+                    <div class="media">
+                        ${getSVG(product.category)}
+                    </div>
+                    <div class="body">
+                        <div class="meta">
+                            <span>${product.tag}</span>
+                            <span>${product.category}</span>
+                        </div>
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <div class="foot">
+                            <span class="price">${money(product.price)}</span>
+                            <button class="add" type="button" data-id="${product.id}">Ajouter</button>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+
+            productGrid.querySelectorAll('.add').forEach(btn => {
+                btn.addEventListener('click', () => addToCart(Number(btn.dataset.id)));
+            });
+        }
+
+        function addToCart(productId) {
+            const product = products.find(item => item.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            renderCart();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            renderCart();
+        }
+
+        function renderCart() {
+            const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+            cartCounter.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+            totalEl.textContent = money(total);
+
+            if (!cart.length) {
+                lines.innerHTML = '<div class="empty">Votre panier est vide. Ajoutez un modèle pour commencer.</div>';
+                return;
+            }
+
+            lines.innerHTML = cart.map(item => `
+                <div class="line">
+                    <div class="line-pic">${getSVG(item.category)}</div>
+                    <div>
+                        <strong>${item.name}</strong>
+                        <small>${item.qty} × ${money(item.price)}</small>
+                    </div>
+                    <button type="button" data-remove="${item.id}">Retirer</button>
+                </div>
+            `).join('');
+
+            lines.querySelectorAll('[data-remove]').forEach(btn => {
+                btn.addEventListener('click', () => removeFromCart(Number(btn.dataset.remove)));
+            });
+        }
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.toggle('active', btn === button));
+                renderProducts(button.dataset.filter);
+            });
+        });
+
+        document.getElementById('openBag').addEventListener('click', () => {
+            bagDrawer.classList.add('open');
+            bagDrawer.setAttribute('aria-hidden', 'false');
+        });
+
+        document.getElementById('closeBag').addEventListener('click', () => {
+            bagDrawer.classList.remove('open');
+            bagDrawer.setAttribute('aria-hidden', 'true');
+        });
+
+        document.getElementById('order').addEventListener('click', () => {
+            const orderMessage = document.getElementById('orderMessage');
+            if (!cart.length) {
+                orderMessage.textContent = 'Ajoutez un article avant de commander.';
+                return;
+            }
+            orderMessage.textContent = 'Commande prise en compte. Merci pour votre confiance.';
+        });
+
+        document.getElementById('newsletterForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const msg = document.getElementById('newsletterMessage');
+            const input = event.currentTarget.querySelector('input');
+            msg.textContent = 'Bienvenue chez tayri Paris — votre code arrive bientôt !';
+            input.value = '';
+        });
+
+        renderProducts();
+        renderCart();
     </script>
 </body>
 
