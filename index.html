@@ -3,17 +3,18 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>tayri Paris | Maison de jersey premium</title>
-    <meta name="description" content="tayri Paris conçoit des pièces premium en jersey doux, respirant et élégant pour le quotidien et les moments forts.">
+    <meta name="description" content="tayri Paris façonne des pièces en jersey épais et souple qui gardent leur tenue du matin au soir, sans repassage ni ajustement.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #f8f2ee;
-            --bg-strong: #f5e6eb;
             --panel: #fffdfb;
-            --card: #fffaf8;
             --ink: #1d1217;
-            --ink-soft: #52414a;
+            --ink-soft: #5c4a53;
             --plum: #341a2a;
             --plum-2: #5d2238;
             --rose: #c76a8d;
@@ -21,871 +22,294 @@
             --gold: #d5ad6b;
             --line: rgba(87, 54, 67, 0.14);
             --shadow: 0 24px 55px rgba(65, 22, 38, 0.12);
-            --shadow-soft: 0 18px 30px rgba(65, 22, 38, 0.08);
-            --success: #3e8f65;
+            --shadow-soft: 0 14px 26px rgba(65, 22, 38, 0.08);
+            --radius: 22px;
+            --font-display: 'Fraunces', serif;
+            --font-body: 'Inter', sans-serif;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { box-sizing: border-box; margin: 0; }
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
         body {
             background: linear-gradient(180deg, #f9f2ef 0%, #f7f0f4 100%);
             color: var(--ink);
-            font-family: "Segoe UI", Arial, sans-serif;
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        img,
-        svg {
-            display: block;
-            max-width: 100%;
-        }
+        img, svg { display: block; max-width: 100%; }
+        a { color: inherit; text-decoration: none; }
+        button, input { font: inherit; }
+        button { border: 0; cursor: pointer; background: none; }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+        .wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
 
-        button,
-        input {
-            font: inherit;
-        }
-
-        button {
-            border: 0;
-            cursor: pointer;
-        }
-
-        .wrap {
-            width: min(1180px, calc(100% - 36px));
-            margin: 0 auto;
-        }
-
+        /* ---------- Header ---------- */
         .topbar {
-            position: sticky;
-            top: 0;
-            z-index: 30;
-            background: rgba(255, 251, 249, 0.8);
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(255, 251, 249, 0.86);
             backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--line);
         }
+        .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 20px; }
 
-        .nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 82px;
-            gap: 24px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--plum);
-        }
-
+        .brand { display: flex; align-items: center; gap: 12px; color: var(--plum); }
         .brand-mark {
-            width: 44px;
-            height: 44px;
-            display: grid;
-            place-items: center;
-            border-radius: 14px;
+            width: 42px; height: 42px; flex-shrink: 0;
+            display: grid; place-items: center; border-radius: 13px;
             background: linear-gradient(135deg, var(--plum) 0%, var(--rose) 100%);
-            color: white;
-            font-weight: 700;
-            letter-spacing: 0.08em;
+            color: white; font-family: var(--font-display); font-weight: 600; font-size: 19px;
             box-shadow: var(--shadow-soft);
         }
-
-        .brand-text {
-            font-size: 1.05rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
+        .brand-text { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: 21px; line-height: 1; }
         .brand-text small {
-            display: block;
-            font-size: 0.62rem;
-            letter-spacing: 0.28em;
-            margin-top: 2px;
-            color: var(--rose);
+            display: flex; align-items: center; gap: 7px;
+            font-family: var(--font-body); font-style: normal; font-weight: 700;
+            font-size: 10.5px; letter-spacing: 3px; margin-top: 5px; color: var(--rose);
         }
+        .brand-text small::before { content: ""; width: 16px; height: 1px; background: var(--rose); }
 
-        .navlinks {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--ink-soft);
+        .navlinks { display: flex; align-items: center; gap: 30px; font-size: 14.5px; font-weight: 600; color: var(--ink-soft); }
+        .navlinks a { position: relative; padding: 4px 0; transition: color 0.25s ease; }
+        .navlinks a::after {
+            content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px;
+            background: var(--rose); transition: width 0.25s ease;
         }
+        .navlinks a:hover { color: var(--plum); }
+        .navlinks a:hover::after { width: 100%; }
 
-        .navlinks a {
-            transition: color 0.25s ease;
-        }
-
-        .navlinks a:hover {
-            color: var(--rose);
-        }
-
+        .nav-actions { display: flex; align-items: center; gap: 14px; }
         .bag-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 18px;
-            border-radius: 999px;
-            background: var(--plum);
-            color: white;
-            font-size: 0.75rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            box-shadow: var(--shadow-soft);
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 10px 16px 10px 18px; border-radius: 999px;
+            background: var(--plum); color: white; font-size: 13.5px; font-weight: 700;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-
+        .bag-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
         .bag-count {
-            width: 26px;
-            height: 26px;
-            display: inline-grid;
-            place-items: center;
-            border-radius: 50%;
-            background: white;
-            color: var(--plum);
-            font-weight: 700;
+            width: 24px; height: 24px; display: inline-grid; place-items: center;
+            border-radius: 50%; background: white; color: var(--plum); font-weight: 700; font-size: 12.5px;
+            transition: transform 0.25s cubic-bezier(.34,1.56,.64,1);
         }
+        .bag-count.pulse { animation: pop 0.4s cubic-bezier(.34,1.56,.64,1); }
+        @keyframes pop { 0%{transform:scale(1);} 45%{transform:scale(1.5);} 100%{transform:scale(1);} }
 
+        .burger { display: none; flex-direction: column; gap: 5px; width: 24px; padding: 6px 0; }
+        .burger span { height: 2px; background: var(--plum); border-radius: 2px; transition: 0.3s; }
+        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity: 0; }
+        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mobile-nav {
+            display: none; flex-direction: column;
+            background: var(--panel); border-bottom: 1px solid var(--line);
+            padding: 6px 20px 18px;
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a { padding: 13px 2px; font-weight: 600; font-size: 15px; border-bottom: 1px solid var(--line); color: var(--ink); }
+        .mobile-nav a:last-child { border-bottom: none; }
+
+        /* ---------- Hero ---------- */
         .hero {
-            position: relative;
-            overflow: hidden;
+            position: relative; overflow: hidden;
             background:
-                radial-gradient(circle at 70% 20%, rgba(199, 106, 141, 0.18), transparent 28%),
-                radial-gradient(circle at 85% 65%, rgba(213, 173, 107, 0.18), transparent 24%),
+                radial-gradient(circle at 75% 15%, rgba(199, 106, 141, 0.16), transparent 32%),
+                radial-gradient(circle at 90% 70%, rgba(213, 173, 107, 0.14), transparent 26%),
                 linear-gradient(120deg, #fffaf8 0%, #f8edf2 100%);
             border-bottom: 1px solid var(--line);
         }
-
         .hero-inner {
-            display: grid;
-            grid-template-columns: 1.08fr 0.92fr;
-            align-items: center;
-            gap: 42px;
-            min-height: 690px;
+            display: grid; grid-template-columns: 1.08fr 0.92fr; align-items: center;
+            gap: 40px; padding: 70px 0 78px;
         }
-
-        .eyebrow {
-            display: inline-block;
-            font-size: 0.8rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--rose);
-            font-weight: 700;
-        }
-
+        .eyebrow { display: inline-block; font-size: 12.5px; letter-spacing: 2.5px; font-weight: 700; color: var(--rose); }
         .hero h1 {
-            margin: 20px 0 18px;
-            font-size: clamp(3.3rem, 6vw, 7rem);
-            line-height: 0.94;
-            letter-spacing: -0.06em;
-            font-weight: 700;
-            max-width: 680px;
-            color: var(--ink);
+            margin: 18px 0 20px; font-family: var(--font-display); font-weight: 500;
+            font-size: clamp(2.6rem, 5.4vw, 4.6rem); line-height: 1.06; letter-spacing: -0.01em;
+            max-width: 15ch; color: var(--ink);
         }
+        .hero h1 em { font-style: italic; color: var(--plum); font-weight: 600; display: block; }
+        .hero p { max-width: 46ch; font-size: 17px; line-height: 1.75; color: var(--ink-soft); }
 
-        .hero h1 span {
-            color: var(--plum);
-            display: block;
-        }
-
-        .hero p {
-            max-width: 580px;
-            font-size: 1.08rem;
-            line-height: 1.8;
-            color: var(--ink-soft);
-        }
-
-        .cta-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin: 32px 0 26px;
-        }
-
+        .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin: 30px 0 26px; }
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 15px 22px;
-            border-radius: 999px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
+            display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+            padding: 15px 26px; border-radius: 999px; font-size: 14.5px; font-weight: 700;
             transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
         }
+        .btn:hover { transform: translateY(-2px); }
+        .btn:active { transform: translateY(0) scale(.97); }
+        .btn-primary { background: var(--plum); color: white; box-shadow: 0 16px 26px rgba(52, 26, 42, 0.24); }
+        .btn-primary:hover { background: var(--plum-2); }
+        .btn-secondary { background: transparent; border: 1.5px solid rgba(52, 26, 42, 0.28); color: var(--plum); }
+        .btn-secondary:hover { border-color: var(--plum); background: rgba(52, 26, 42, 0.04); }
 
-        .btn:hover {
-            transform: translateY(-2px);
-        }
+        .proof { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 13.5px; color: var(--ink-soft); font-weight: 500; }
+        .proof span { display: flex; align-items: center; gap: 8px; }
+        .proof span::before { content: "✓"; color: var(--rose); font-weight: 700; }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--rose) 0%, var(--plum) 100%);
-            color: white;
-            box-shadow: 0 18px 28px rgba(116, 32, 68, 0.24);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid rgba(52, 26, 42, 0.28);
-            color: var(--plum);
-        }
-
-        .proof {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-            font-size: 0.76rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--ink-soft);
-        }
-
-        .proof span::before {
-            content: "✓";
-            color: var(--rose);
-            margin-right: 8px;
-            font-weight: 700;
-        }
-
-        .visual-wrap {
-            position: relative;
-            min-height: 500px;
-            display: grid;
-            place-items: center;
-        }
-
+        .visual-wrap { position: relative; min-height: 460px; display: grid; place-items: center; }
         .halo {
-            position: absolute;
-            width: min(430px, 80%);
-            aspect-ratio: 1;
+            position: absolute; width: min(400px, 82%); aspect-ratio: 1;
             border-radius: 42% 58% 54% 46% / 48% 42% 58% 52%;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(240,213,223,0.7) 40%, rgba(199,106,141,0.18) 100%);
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(240,213,223,0.65) 42%, rgba(199,106,141,0.16) 100%);
             box-shadow: inset 0 0 40px rgba(255,255,255,0.8);
-            animation: drift 10s ease-in-out infinite;
+            animation: drift 11s ease-in-out infinite;
         }
-
         .accent-ring {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            right: 12%;
-            top: 14%;
-            border: 1px dashed rgba(199, 106, 141, 0.8);
-            border-radius: 50%;
-            animation: spin 16s linear infinite;
+            position: absolute; width: 108px; height: 108px; right: 10%; top: 12%;
+            border: 1px dashed rgba(199, 106, 141, 0.75); border-radius: 50%;
+            animation: spin 18s linear infinite;
         }
-
         .accent-ring::after {
-            content: "";
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--rose);
-            top: -6px;
-            left: 52px;
-            box-shadow: 0 0 0 5px rgba(199, 106, 141, 0.18);
+            content: ""; position: absolute; width: 11px; height: 11px; border-radius: 50%;
+            background: var(--rose); top: -5.5px; left: 48px; box-shadow: 0 0 0 5px rgba(199, 106, 141, 0.16);
+        }
+        .model { position: relative; width: min(320px, 78%); filter: drop-shadow(0 28px 24px rgba(52, 26, 42, 0.2)); animation: floatUp 5s ease-in-out infinite; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .halo, .accent-ring, .model, .card { animation: none !important; }
+            html { scroll-behavior: auto; }
         }
 
-        .model {
-            position: relative;
-            width: min(360px, 80%);
-            filter: drop-shadow(0 32px 28px rgba(52, 26, 42, 0.22));
-            animation: floatUp 5s ease-in-out infinite;
-        }
-
-        .section {
-            padding: 110px 0;
-        }
-
-        .section-head {
-            max-width: 700px;
-            margin: 0 auto 42px;
-            text-align: center;
-        }
-
+        /* ---------- Sections ---------- */
+        .section { padding: 88px 0; }
+        .section-head { max-width: 620px; margin: 0 auto 40px; }
+        .section-head.center { text-align: center; }
         .section-head h2 {
-            font-size: clamp(2.2rem, 3vw, 3.4rem);
-            letter-spacing: -0.05em;
-            line-height: 1.1;
-            margin: 12px 0 12px;
-            color: var(--ink);
+            font-family: var(--font-display); font-weight: 500;
+            font-size: clamp(1.9rem, 3.2vw, 2.7rem); line-height: 1.14; letter-spacing: -0.01em;
+            margin-bottom: 12px; color: var(--ink);
         }
+        .section-head p { font-size: 16px; line-height: 1.75; color: var(--ink-soft); }
 
-        .section-head p {
-            font-size: 1.02rem;
-            line-height: 1.8;
-            color: var(--ink-soft);
-        }
+        .feature-wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 22px; }
+        .feature-box { padding: 38px; background: rgba(255, 255, 255, 0.7); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-soft); }
+        .feature-box h3 { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.6rem, 2.6vw, 2.1rem); line-height: 1.18; margin-bottom: 16px; color: var(--plum); }
+        .feature-box p { color: var(--ink-soft); line-height: 1.75; font-size: 15.5px; }
 
-        .feature-wrap {
-            display: grid;
-            grid-template-columns: 1.08fr 0.92fr;
-            gap: 20px;
-        }
+        .metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 26px; }
+        .metric { background: white; border: 1px solid var(--line); border-radius: 15px; padding: 16px 18px; }
+        .metric strong { display: block; font-family: var(--font-display); font-size: 1.5rem; color: var(--rose); margin-bottom: 4px; font-weight: 600; }
+        .metric span { color: var(--ink-soft); font-size: 12.5px; }
 
-        .feature-box {
-            padding: 42px;
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid var(--line);
-            border-radius: 28px;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .feature-box h3 {
-            color: var(--plum);
-            font-size: clamp(2rem, 3vw, 2.7rem);
-            line-height: 1.12;
-            letter-spacing: -0.05em;
-            margin-bottom: 18px;
-        }
-
-        .feature-box p {
-            color: var(--ink-soft);
-            line-height: 1.8;
-            font-size: 1rem;
-        }
-
-        .metrics {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-            margin-top: 28px;
-        }
-
-        .metric {
-            background: white;
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            padding: 18px 18px 14px;
-        }
-
-        .metric strong {
-            display: block;
-            font-size: 1.8rem;
-            color: var(--rose);
-            margin-bottom: 8px;
-            font-weight: 700;
-            letter-spacing: -0.06em;
-        }
-
-        .metric span {
-            color: var(--ink-soft);
-            font-size: 0.72rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
-        .palette {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 14px;
-        }
-
-        .tone {
-            min-height: 220px;
-            border-radius: 24px;
-            padding: 16px;
-            color: white;
-            display: flex;
-            align-items: end;
-            font-size: 0.72rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            box-shadow: inset 0 -90px 55px rgba(0,0,0,0.12);
-        }
-
+        .palette { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+        .tone { min-height: 200px; border-radius: var(--radius); padding: 16px; color: white; display: flex; align-items: end; font-size: 13px; font-weight: 600; box-shadow: inset 0 -80px 50px rgba(0,0,0,0.12); }
         .tone.plum { background: linear-gradient(135deg, #3d1d2d, #7a2a45); }
         .tone.rose { background: linear-gradient(135deg, #edc9d7, #d28ca7); color: #2b1a22; }
         .tone.ink { background: linear-gradient(135deg, #1e1519, #40313d); }
 
-        .shop {
-            background: linear-gradient(180deg, #fdf5f6 0%, #fffaf7 100%);
+        .shop { background: linear-gradient(180deg, #fdf5f6 0%, #fffaf7 100%); }
+        .filters { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 34px; }
+        .filter { padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,0.8); color: var(--plum); font-size: 13.5px; font-weight: 600; transition: all 0.25s ease; }
+        .filter.active, .filter:hover { background: var(--plum); border-color: var(--plum); color: white; }
+
+        .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+        .card { background: rgba(255,255,255,0.85); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-soft); transition: transform 0.25s ease, box-shadow 0.25s ease; animation: rise 0.45s ease both; }
+        .card:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+        .card.hide { display: none; }
+        .media { position: relative; aspect-ratio: 4/3.4; display: grid; place-items: center; background: linear-gradient(180deg, #f8eef2 0%, #f5e7ec 100%); }
+        .media-tag { position: absolute; top: 16px; left: 16px; padding: 6px 11px; border-radius: 999px; background: rgba(255,255,255,0.85); color: var(--plum); font-size: 11px; font-weight: 700; }
+        .mini { width: 42%; transition: transform 0.3s ease; }
+        .card:hover .mini { transform: scale(1.06) rotate(2deg); }
+        .body { padding: 22px 20px 20px; }
+        .meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+        .meta span { font-size: 12px; color: var(--rose); font-weight: 700; }
+        .meta .cat { color: var(--ink-soft); font-weight: 600; }
+        .body h3 { font-family: var(--font-display); font-weight: 500; font-size: 1.4rem; letter-spacing: -0.01em; color: var(--ink); }
+        .body p { font-size: 14px; line-height: 1.65; color: var(--ink-soft); margin-top: 8px; }
+        .foot { margin-top: 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+        .price { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--plum); }
+        .add { background: var(--ink); color: white; border-radius: 11px; padding: 10px 15px; font-size: 13px; font-weight: 600; transition: background 0.2s ease; }
+        .add:hover { background: var(--rose); }
+
+        .craft { background: linear-gradient(180deg, #f8f4f1 0%, #fdf6f8 100%); }
+        .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+        .step { padding: 26px 22px; background: rgba(255,255,255,0.7); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-soft); }
+        .number { display: inline-block; font-family: var(--font-display); font-size: 2.6rem; font-weight: 500; color: rgba(199, 106, 141, 0.5); margin-bottom: 8px; }
+        .step h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; margin-bottom: 8px; }
+        .step p { color: var(--ink-soft); line-height: 1.7; font-size: 14.5px; }
+
+        .newsletter { background: linear-gradient(135deg, var(--plum) 0%, #4b1e2e 100%); color: white; text-align: center; }
+        .newsletter .eyebrow { color: #f7d9e3; }
+        .newsletter h2 { margin-top: 12px; font-family: var(--font-display); font-weight: 500; font-size: clamp(1.9rem, 3.6vw, 3rem); line-height: 1.12; }
+        .newsletter p { max-width: 500px; margin: 12px auto 24px; color: rgba(255,255,255,0.8); line-height: 1.75; font-size: 15.5px; }
+        .newsletter form { display: flex; justify-content: center; gap: 10px; max-width: 480px; margin: 0 auto; }
+        .newsletter input { flex: 1; min-width: 0; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: white; padding: 14px 18px; font-size: 14.5px; outline: none; }
+        .newsletter input:focus { border-color: rgba(255,255,255,0.5); }
+        .newsletter input::placeholder { color: rgba(255,255,255,0.6); }
+        .newsletter .btn { background: linear-gradient(135deg, #f0c76d 0%, #d7a85e 100%); color: var(--plum); box-shadow: 0 16px 26px rgba(194, 142, 62, 0.22); flex-shrink: 0; }
+        .message { min-height: 22px; margin-top: 15px; font-size: 13px; font-weight: 600; color: #f5d58f; }
+
+        /* ---------- Cart drawer ---------- */
+        .drawer { position: fixed; inset: 0; background: rgba(29, 18, 23, 0.45); z-index: 60; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .drawer.open { opacity: 1; visibility: visible; }
+        .panel { width: min(420px, 100%); height: 100%; margin-left: auto; background: #fffaf8; padding: 26px 22px 20px; transform: translateX(100%); transition: transform 0.35s ease; display: flex; flex-direction: column; }
+        .drawer.open .panel { transform: translateX(0); }
+        .panel-head { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); padding-bottom: 16px; }
+        .panel-head h2 { font-family: var(--font-display); font-weight: 500; font-size: 1.7rem; }
+        .close-btn { color: var(--plum); font-size: 2rem; line-height: 1; padding: 4px 8px; }
+        .lines { flex: 1; overflow: auto; padding-right: 2px; }
+        .line { display: grid; grid-template-columns: 58px 1fr auto; gap: 12px; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--line); }
+        .line-pic { height: 58px; border-radius: 14px; display: grid; place-items: center; background: linear-gradient(135deg, #f6dfe7, #f3e9e4); }
+        .line-pic svg { width: 36px; height: 36px; }
+        .line strong { display: block; font-size: 14.5px; margin-bottom: 4px; font-weight: 600; }
+        .line small { color: var(--ink-soft); font-size: 12.5px; }
+        .line button { color: var(--rose); text-decoration: underline; font-size: 12.5px; }
+        .total { display: flex; justify-content: space-between; align-items: center; padding-top: 15px; margin-top: 6px; border-top: 1px solid var(--line); font-weight: 700; font-size: 1.05rem; }
+        .panel .btn { width: 100%; margin-top: 15px; }
+        .empty { text-align: center; padding: 50px 10px 16px; color: var(--ink-soft); font-size: 15px; }
+
+        footer { padding: 26px 0 32px; color: var(--ink-soft); font-size: 13.5px; text-align: center; border-top: 1px solid var(--line); }
+
+        @keyframes drift { 50% { border-radius: 50% 50% 60% 40% / 45% 55% 45% 55%; transform: rotate(8deg) scale(1.03); } }
+        @keyframes floatUp { 50% { transform: translateY(-14px); } }
+        @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 1040px) {
+            .hero-inner { gap: 30px; padding: 50px 0 60px; }
+            .feature-wrap { grid-template-columns: 1fr; }
+            .palette { grid-template-columns: repeat(3, 1fr); }
+            .visual-wrap { min-height: 400px; }
         }
 
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .filter {
-            padding: 11px 18px;
-            border-radius: 999px;
-            border: 1px solid var(--line);
-            background: rgba(255,255,255,0.8);
-            color: var(--plum);
-            font-size: 0.72rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            transition: all 0.25s ease;
-        }
-
-        .filter.active,
-        .filter:hover {
-            background: var(--plum);
-            border-color: var(--plum);
-            color: white;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 24px;
-        }
-
-        .card {
-            background: rgba(255,255,255,0.8);
-            border: 1px solid var(--line);
-            border-radius: 26px;
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            animation: rise 0.45s ease both;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow);
-        }
-
-        .card.hide {
-            display: none;
-        }
-
-        .media {
-            position: relative;
-            height: 260px;
-            display: grid;
-            place-items: center;
-            background: linear-gradient(180deg, #f8eef2 0%, #f5e7ec 100%);
-        }
-
-        .media::before {
-            content: "TAYRI PARIS";
-            position: absolute;
-            top: 18px;
-            left: 18px;
-            padding: 7px 10px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.8);
-            color: var(--plum);
-            font-size: 0.66rem;
-            letter-spacing: 0.14em;
-            font-weight: 700;
-        }
-
-        .mini {
-            width: 185px;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover .mini {
-            transform: scale(1.06) rotate(2deg);
-        }
-
-        .body {
-            padding: 22px 20px 18px;
-        }
-
-        .meta {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .meta span {
-            font-size: 0.7rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--rose);
-            font-weight: 700;
-        }
-
-        .body h3 {
-            font-size: 1.7rem;
-            letter-spacing: -0.04em;
-            color: var(--ink);
-            font-weight: 600;
-        }
-
-        .body p {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            color: var(--ink-soft);
-            margin-top: 8px;
-        }
-
-        .foot {
-            margin-top: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 14px;
-        }
-
-        .price {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--plum);
-        }
-
-        .add {
-            background: var(--ink);
-            color: white;
-            border-radius: 12px;
-            padding: 11px 14px;
-            font-size: 0.7rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            transition: background 0.2s ease;
-        }
-
-        .add:hover {
-            background: var(--rose);
-        }
-
-        .craft {
-            background: linear-gradient(180deg, #f8f4f1 0%, #fdf6f8 100%);
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 28px;
-            text-align: center;
-        }
-
-        .step {
-            padding: 28px 22px;
-            background: rgba(255,255,255,0.7);
-            border: 1px solid var(--line);
-            border-radius: 24px;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .number {
-            display: inline-block;
-            font-size: 3.6rem;
-            font-weight: 700;
-            letter-spacing: -0.08em;
-            color: rgba(199, 106, 141, 0.45);
-            margin-bottom: 12px;
-        }
-
-        .step h3 {
-            font-size: 1.5rem;
-            letter-spacing: -0.04em;
-            margin-bottom: 10px;
-        }
-
-        .step p {
-            color: var(--ink-soft);
-            line-height: 1.75;
-            font-size: 0.96rem;
-        }
-
-        .newsletter {
-            background: linear-gradient(135deg, var(--plum) 0%, #4b1e2e 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .newsletter .eyebrow {
-            color: #f7d9e3;
-        }
-
-        .newsletter h2 {
-            margin-top: 14px;
-            font-size: clamp(2.4rem, 4vw, 4rem);
-            letter-spacing: -0.06em;
-            line-height: 1.06;
-        }
-
-        .newsletter p {
-            max-width: 580px;
-            margin: 12px auto 24px;
-            color: rgba(255,255,255,0.8);
-            line-height: 1.8;
-            font-size: 1.02rem;
-        }
-
-        .newsletter form {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            max-width: 520px;
-            margin: 0 auto;
-        }
-
-        .newsletter input {
-            flex: 1;
-            min-width: 0;
-            border-radius: 999px;
-            border: 0;
-            background: rgba(255,255,255,0.08);
-            color: white;
-            padding: 16px 20px;
-            font-size: 0.96rem;
-            outline: none;
-        }
-
-        .newsletter input::placeholder {
-            color: rgba(255,255,255,0.68);
-        }
-
-        .newsletter .btn {
-            background: linear-gradient(135deg, #f0c76d 0%, #d7a85e 100%);
-            color: var(--plum);
-            border: 0;
-            box-shadow: 0 18px 28px rgba(194, 142, 62, 0.2);
-        }
-
-        .message {
-            min-height: 24px;
-            margin-top: 16px;
-            font-size: 0.78rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #f5d58f;
-        }
-
-        .drawer {
-            position: fixed;
-            inset: 0;
-            background: rgba(29, 18, 23, 0.45);
-            z-index: 40;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .drawer.open {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .panel {
-            width: min(430px, 100%);
-            height: 100%;
-            margin-left: auto;
-            background: #fffaf8;
-            padding: 28px 24px 20px;
-            transform: translateX(100%);
-            transition: transform 0.35s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .drawer.open .panel {
-            transform: translateX(0);
-        }
-
-        .panel-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--line);
-            padding-bottom: 18px;
-        }
-
-        .panel-head h2 {
-            letter-spacing: -0.05em;
-            font-size: 2rem;
-        }
-
-        .close-btn {
-            background: none;
-            color: var(--plum);
-            font-size: 2.2rem;
-            line-height: 1;
-        }
-
-        .lines {
-            flex: 1;
-            overflow: auto;
-            padding-right: 4px;
-        }
-
-        .line {
-            display: grid;
-            grid-template-columns: 64px 1fr auto;
-            gap: 12px;
-            align-items: center;
-            padding: 16px 0;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .line-pic {
-            height: 64px;
-            border-radius: 16px;
-            display: grid;
-            place-items: center;
-            background: linear-gradient(135deg, #f6dfe7, #f3e9e4);
-        }
-
-        .line-pic svg {
-            width: 42px;
-            height: 42px;
-        }
-
-        .line strong {
-            display: block;
-            font-size: 1rem;
-            margin-bottom: 5px;
-        }
-
-        .line small {
-            color: var(--ink-soft);
-            font-size: 0.76rem;
-        }
-
-        .line button {
-            background: none;
-            color: var(--rose);
-            text-decoration: underline;
-            font-size: 0.75rem;
-        }
-
-        .total {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 16px;
-            margin-top: 8px;
-            border-top: 1px solid var(--line);
-            font-weight: 700;
-            font-size: 1.05rem;
-        }
-
-        .panel .btn {
-            width: 100%;
-            margin-top: 16px;
-        }
-
-        .empty {
-            text-align: center;
-            padding: 54px 10px 18px;
-            color: var(--ink-soft);
-            font-size: 0.98rem;
-        }
-
-        footer {
-            padding: 22px 0 30px;
-            color: var(--ink-soft);
-            font-size: 0.84rem;
-            text-align: center;
-        }
-
-        @keyframes drift {
-            50% {
-                border-radius: 50% 50% 60% 40% / 45% 55% 45% 55%;
-                transform: rotate(8deg) scale(1.03);
-            }
-        }
-
-        @keyframes floatUp {
-            50% {
-                transform: translateY(-14px);
-            }
-        }
-
-        @keyframes rise {
-            from {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @media (max-width: 890px) {
-            .navlinks {
-                display: none;
-            }
-
-            .hero-inner,
-            .feature-wrap,
-            .steps,
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-inner {
-                text-align: center;
-                padding: 30px 0 40px;
-            }
-
-            .hero p {
-                margin: 0 auto;
-            }
-
-            .cta-row,
-            .proof {
-                justify-content: center;
-            }
-
-            .visual-wrap {
-                min-height: 380px;
-            }
+        @media (max-width: 860px) {
+            .navlinks { display: none; }
+            .burger { display: flex; }
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero h1 { margin-left: auto; margin-right: auto; }
+            .hero p, .section-head { margin-left: auto; margin-right: auto; }
+            .cta-row, .proof { justify-content: center; }
+            .grid { grid-template-columns: repeat(2, 1fr); }
+            .steps { grid-template-columns: 1fr; gap: 18px; }
         }
 
         @media (max-width: 620px) {
-            .wrap {
-                width: calc(100% - 24px);
-            }
+            .wrap { width: calc(100% - 28px); }
+            .nav { height: 68px; }
+            .section { padding: 64px 0; }
+            .grid { grid-template-columns: 1fr; }
+            .metrics, .palette { grid-template-columns: 1fr; }
+            .tone { min-height: 140px; }
+            .newsletter form { flex-direction: column; }
+            .newsletter .btn { width: 100%; }
+            .feature-box { padding: 26px 20px; }
+            .step { padding: 24px 18px; }
+            .visual-wrap { min-height: 320px; }
+            .accent-ring { width: 84px; height: 84px; }
+        }
 
-            .brand-text {
-                letter-spacing: 0.11em;
-            }
-
-            .newsletter form {
-                flex-direction: column;
-            }
-
-            .feature-box,
-            .step {
-                padding: 24px 18px;
-            }
-
-            .palette {
-                grid-template-columns: 1fr;
-            }
-
-            .tone {
-                min-height: 150px;
-            }
+        @media (max-width: 400px) {
+            .brand-text { font-size: 18px; }
+            .bag-btn span:not(.bag-count) { display: none; }
         }
     </style>
 </head>
@@ -893,9 +317,9 @@
 <body>
     <header class="topbar">
         <div class="wrap nav">
-            <a href="#accueil" class="brand" aria-label="tayri Paris">
+            <a href="#accueil" class="brand" aria-label="tayri Paris — accueil">
                 <span class="brand-mark">T</span>
-                <span class="brand-text">tayri<small>PARIS</small></span>
+                <span class="brand-text">tayri<small>Paris</small></span>
             </a>
             <nav class="navlinks" aria-label="Navigation principale">
                 <a href="#maison">Maison</a>
@@ -903,10 +327,21 @@
                 <a href="#collection">Collection</a>
                 <a href="#atelier">Atelier</a>
             </nav>
-            <button class="bag-btn" id="openBag" type="button">
-                Panier <span class="bag-count" id="count">0</span>
-            </button>
+            <div class="nav-actions">
+                <button class="bag-btn" id="openBag" type="button">
+                    <span>Panier</span> <span class="bag-count" id="count">0</span>
+                </button>
+                <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
+        <nav class="mobile-nav" id="mobileNav" aria-label="Navigation mobile">
+            <a href="#maison">Maison</a>
+            <a href="#matiere">Matière</a>
+            <a href="#collection">Collection</a>
+            <a href="#atelier">Atelier</a>
+        </nav>
     </header>
 
     <main id="accueil">
@@ -914,16 +349,16 @@
             <div class="wrap hero-inner">
                 <div>
                     <span class="eyebrow">Maison tayri Paris</span>
-                    <h1>Le luxe discret <span>dans chaque mouvement.</span></h1>
-                    <p>Des pièces en jersey premium pensées pour une élégance sans effort : souplesse, tenue et confort au quotidien, dans un univers moderne et raffiné.</p>
+                    <h1>Un jersey qui tient la forme<em>sans jamais se froisser.</em></h1>
+                    <p>tayri Paris façonne des pièces en jersey épais et souple, taillées pour garder leur tenue du matin jusqu'au soir — sans repassage, sans y penser.</p>
                     <div class="cta-row">
-                        <a class="btn btn-primary" href="#collection">Découvrir la collection</a>
-                        <a class="btn btn-secondary" href="#matiere">Voir la matière</a>
+                        <a class="btn btn-primary" href="#collection">Voir la collection</a>
+                        <a class="btn btn-secondary" href="#matiere">Découvrir le tissu</a>
                     </div>
                     <div class="proof">
-                        <span>Jersey premium</span>
-                        <span>Livraison offerte</span>
-                        <span>Retours simples</span>
+                        <span>Jersey 320 g/m²</span>
+                        <span>Livraison offerte dès 80€</span>
+                        <span>Retours sous 30 jours</span>
                     </div>
                 </div>
 
@@ -946,33 +381,15 @@
 
         <section class="section" id="matiere">
             <div class="wrap">
-                <div class="section-head">
-                    <span class="eyebrow">Notre signature</span>
-                    <h2>La matière qui donne du volume à l'élégance.</h2>
-                    <p>Chaque pièce tayri Paris est conçue dans un jersey premium, doux au toucher, respirant et structuré pour rester impeccable de la journée à la soirée.</p>
-                </div>
-
                 <div class="feature-wrap">
                     <article class="feature-box">
-                        <h3>Doux. Dense. Élégant.</h3>
-                        <p>Notre tissu offre une sensation veloutée sur la peau, un tombé net et une excellente tenue. Il suit le corps sans le serrer, pour une allure souple, contemporaine et toujours distinguée.</p>
+                        <h3>Épais, dense, et pourtant léger sur la peau.</h3>
+                        <p>Notre jersey est tissé en quatre sens : il suit chaque mouvement sans se déformer, garde sa couleur lavage après lavage et ne marque jamais la taille. Le résultat, c'est une pièce qu'on oublie sur soi — dans le bon sens du terme.</p>
                         <div class="metrics">
-                            <div class="metric">
-                                <strong>4-way</strong>
-                                <span>Extensible</span>
-                            </div>
-                            <div class="metric">
-                                <strong>Premium</strong>
-                                <span>Maille haute gamme</span>
-                            </div>
-                            <div class="metric">
-                                <strong>Respirant</strong>
-                                <span>Confort long</span>
-                            </div>
-                            <div class="metric">
-                                <strong>Net</strong>
-                                <span>Sans froissage</span>
-                            </div>
+                            <div class="metric"><strong>4 sens</strong><span>Extensibilité complète</span></div>
+                            <div class="metric"><strong>320 g/m²</strong><span>Grammage dense</span></div>
+                            <div class="metric"><strong>Coton mérinos</strong><span>Respirant toute la journée</span></div>
+                            <div class="metric"><strong>0 repassage</strong><span>Anti-froissage certifié</span></div>
                         </div>
                     </article>
 
@@ -987,10 +404,9 @@
 
         <section class="section shop" id="collection">
             <div class="wrap">
-                <div class="section-head">
-                    <span class="eyebrow">La collection</span>
-                    <h2>Une pièce, plusieurs vies.</h2>
-                    <p>Des silhouettes contemporaines pensée pour le quotidien, les sorties élégantes et les instants plus légers.</p>
+                <div class="section-head center">
+                    <h2>Des essentiels pour la semaine, et les soirs qui comptent.</h2>
+                    <p>Six pièces en jersey premium, chacune pensée pour un moment précis de la journée.</p>
                 </div>
 
                 <div class="filters">
@@ -1006,25 +422,24 @@
 
         <section class="section craft" id="atelier">
             <div class="wrap">
-                <div class="section-head">
-                    <span class="eyebrow">Le geste tayri</span>
-                    <h2>Prêt à porter, pensé pour durer.</h2>
+                <div class="section-head center">
+                    <h2>Trois gestes, une tenue qui dure.</h2>
                 </div>
                 <div class="steps">
                     <article class="step">
                         <span class="number">01</span>
                         <h3>On choisit</h3>
-                        <p>Des coupes élégantes, un confort précis et un univers visuel qui reste intemporel.</p>
+                        <p>Une coupe qui va à l'essentiel et un tissu qui ne perd pas sa forme au fil des saisons.</p>
                     </article>
                     <article class="step">
                         <span class="number">02</span>
                         <h3>On ajuste</h3>
-                        <p>La matière s’adapte à la morphologie et garde sa structure tout au long de la journée.</p>
+                        <p>Le jersey épouse la silhouette et garde sa structure du matin jusqu'au soir.</p>
                     </article>
                     <article class="step">
                         <span class="number">03</span>
                         <h3>On porte</h3>
-                        <p>Une allure naturelle, raffinée et libre, pensée pour le mouvement et la confidence.</p>
+                        <p>Une même pièce, du bureau au dîner, sans avoir besoin de se changer.</p>
                     </article>
                 </div>
             </div>
@@ -1033,13 +448,13 @@
         <section class="section newsletter" id="maison">
             <div class="wrap">
                 <span class="eyebrow">Bienvenue chez tayri Paris</span>
-                <h2>Une attention particulière pour votre première commande.</h2>
-                <p>Recevez votre code de bienvenue et découvrez nos futures teintes exclusives en jersey premium.</p>
+                <h2>Recevez votre code, avant tout le monde.</h2>
+                <p>Inscrivez-vous pour découvrir nos prochaines teintes en avant-première et profiter de -10% sur votre première commande.</p>
                 <form id="newsletterForm">
-                    <input type="email" placeholder="Votre adresse e-mail" required>
+                    <input type="email" placeholder="Votre adresse e-mail" required autocomplete="email">
                     <button class="btn" type="submit">Recevoir -10%</button>
                 </form>
-                <div class="message" id="newsletterMessage"></div>
+                <div class="message" id="newsletterMessage" role="status"></div>
             </div>
         </section>
     </main>
@@ -1052,24 +467,26 @@
         <div class="panel">
             <div class="panel-head">
                 <h2>Votre panier</h2>
-                <button class="close-btn" id="closeBag" type="button" aria-label="Fermer">×</button>
+                <button class="close-btn" id="closeBag" type="button" aria-label="Fermer le panier">×</button>
             </div>
             <div class="lines" id="lines"></div>
             <div class="total"><span>Total</span><span id="total">0,00 €</span></div>
             <button class="btn btn-primary" id="order" type="button">Passer la commande</button>
-            <div class="message" id="orderMessage"></div>
+            <div class="message" id="orderMessage" role="status"></div>
         </div>
     </aside>
 
     <script>
         const products = [
-            { id: 1, name: 'Voile Ondine', category: 'quotidien', price: 98, description: 'Silhouette souple et fluide pour un look discret et chic.', tag: 'Best seller' },
-            { id: 2, name: 'Mallea Move', category: 'sport', price: 118, description: 'Confort de mouvement et tenue impeccable, même en route.', tag: 'Nouvelle' },
-            { id: 3, name: 'Nocturne', category: 'soiree', price: 136, description: 'Un tombé sculpté pour les soirées raffinées et les invités.', tag: 'Signature' },
-            { id: 4, name: 'Solaire', category: 'quotidien', price: 92, description: 'La pièce légère qui transforme le quotidien en moment de style.', tag: 'Essentiel' },
-            { id: 5, name: 'Arcade', category: 'sport', price: 104, description: 'Une structure douce pour une allure active et élégante.', tag: 'Sport' },
-            { id: 6, name: 'Étoile', category: 'soiree', price: 148, description: 'Le modèle premium pour faire entrer la nuit avec élégance.', tag: 'Coup de cœur' }
+            { id: 1, name: 'Voile Ondine', category: 'quotidien', price: 98, description: 'Robe fluide en jersey mat, ceinture nouée à la taille, pour les journées qui s\u2019enchaînent sans repasser.', tag: 'Best-seller' },
+            { id: 2, name: 'Mallea Move', category: 'sport', price: 118, description: 'Legging taille haute en jersey 4 sens, qui accompagne chaque mouvement sans jamais marquer.', tag: 'Nouveauté' },
+            { id: 3, name: 'Nocturne', category: 'soiree', price: 136, description: 'Robe longue au dos drapé, jersey satiné qui capte la lumière dès la tombée du jour.', tag: 'Signature' },
+            { id: 4, name: 'Solaire', category: 'quotidien', price: 92, description: 'T-shirt long en jersey léger, coupe droite, la pièce qu\u2019on porte trois jours sur cinq.', tag: 'Essentiel' },
+            { id: 5, name: 'Arcade', category: 'sport', price: 104, description: 'Brassière et short assortis, maintien doux, jersey respirant pensé pour l\u2019effort.', tag: 'Duo sport' },
+            { id: 6, name: 'Étoile', category: 'soiree', price: 148, description: 'Robe bustier en jersey épais, ligne épurée, pour les soirées qui se prolongent.', tag: 'Coup de cœur' }
         ];
+
+        const categoryLabels = { quotidien: 'Quotidien', sport: 'Sport', soiree: 'Soirée' };
 
         const productGrid = document.getElementById('products');
         const filterButtons = document.querySelectorAll('.filter');
@@ -1085,20 +502,15 @@
         }
 
         function getSVG(kind) {
-            const palette = {
-                quotidien: '#9d4a63',
-                sport: '#d7a85e',
-                soiree: '#3b1d2f'
-            };
+            const palette = { quotidien: '#9d4a63', sport: '#d7a85e', soiree: '#3b1d2f' };
             const color = palette[kind] || '#9d4a63';
             return `
-            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <svg class="mini" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M26 72C26 46 47 26 60 26C73 26 94 46 94 72C94 85 84 96 60 96C36 96 26 85 26 72Z" fill="${color}" opacity="0.92"/>
                 <path d="M38 67C42 52 49 45 60 45C71 45 78 52 82 67C72 73 66 76 60 76C54 76 48 73 38 67Z" fill="#f7e4d4" opacity="0.9"/>
                 <path d="M49 38C52 31 56 28 60 28C64 28 68 31 71 38C67 35 64 34 60 34C56 34 53 35 49 38Z" fill="#3d1d2d"/>
                 <circle cx="76" cy="71" r="8" fill="#f6f0ee" stroke="#d59a96" stroke-width="3"/>
             </svg>`;
-            `;
         }
 
         function renderProducts(filter = 'all') {
@@ -1107,12 +519,13 @@
             productGrid.innerHTML = visible.map((product) => `
                 <article class="card" data-category="${product.category}">
                     <div class="media">
+                        <span class="media-tag">tayri Paris</span>
                         ${getSVG(product.category)}
                     </div>
                     <div class="body">
                         <div class="meta">
                             <span>${product.tag}</span>
-                            <span>${product.category}</span>
+                            <span class="cat">${categoryLabels[product.category]}</span>
                         </div>
                         <h3>${product.name}</h3>
                         <p>${product.description}</p>
@@ -1134,11 +547,12 @@
             if (!product) return;
 
             const existing = cart.find(item => item.id === productId);
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ ...product, qty: 1 });
-            }
+            if (existing) { existing.qty += 1; } else { cart.push({ ...product, qty: 1 }); }
+
+            cartCounter.classList.remove('pulse');
+            void cartCounter.offsetWidth;
+            cartCounter.classList.add('pulse');
+
             renderCart();
         }
 
@@ -1193,19 +607,32 @@
         document.getElementById('order').addEventListener('click', () => {
             const orderMessage = document.getElementById('orderMessage');
             if (!cart.length) {
-                orderMessage.textContent = 'Ajoutez un article avant de commander.';
+                orderMessage.textContent = 'Ajoutez un article avant de passer commande.';
                 return;
             }
-            orderMessage.textContent = 'Commande prise en compte. Merci pour votre confiance.';
+            orderMessage.textContent = 'Commande enregistrée. Merci pour votre confiance.';
         });
 
         document.getElementById('newsletterForm').addEventListener('submit', (event) => {
             event.preventDefault();
             const msg = document.getElementById('newsletterMessage');
             const input = event.currentTarget.querySelector('input');
-            msg.textContent = 'Bienvenue chez tayri Paris — votre code arrive bientôt !';
+            msg.textContent = 'Bienvenue chez tayri Paris — votre code arrive par e-mail.';
             input.value = '';
         });
+
+        const burger = document.getElementById('burger');
+        const mobileNav = document.getElementById('mobileNav');
+        burger.addEventListener('click', () => {
+            const open = mobileNav.classList.toggle('open');
+            burger.classList.toggle('open', open);
+            burger.setAttribute('aria-expanded', String(open));
+        });
+        mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            mobileNav.classList.remove('open');
+            burger.classList.remove('open');
+            burger.setAttribute('aria-expanded', 'false');
+        }));
 
         renderProducts();
         renderCart();
